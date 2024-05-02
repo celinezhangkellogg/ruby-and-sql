@@ -5,4 +5,21 @@
 
 # String Class
 
+favorable_food = "tacos"
+puts favorable_food
+puts favorable_food.class
+puts favorable_food.upcase
+
 # String Methods
+
+# Define class
+class Dog
+    def speak
+        puts "Woof!"
+    end
+end
+
+# try new
+lucy = Dog.new
+lucy.speak
+
