@@ -14,8 +14,27 @@ Activity.destroy_all
 #   activity data in the database.  Afterwards, display a
 #   single salesperson's activity data:
 
+puts "There are #{Company.all.count} Companies"
+puts "There are #{Activity.all.count} Activities"
+
 # 1. insert 3 rows in the activities table with relationships to
 # a single salesperson and 2 different contacts
+
+# find the person
+ben = Salesppl.find_by({"first_name" => "Ben"})
+tim = Contact.find_by({"first_name" => "Tim"})
+
+# add relation
+activity = Activity.new
+activity["salesperson_id"] = ben["id"]
+activity["contact_id"] = tim["id"]
+activity["note"] = "quick checkin over facetime"
+activity.save
+p activity
+
+puts "There are #{Activity.all.count} Activities"
+
+
 
 # 2. Display all the activities between the salesperson used above
 # and one of the contacts (sample output below):
@@ -24,6 +43,9 @@ Activity.destroy_all
 # Activities between Ben and Tim Cook:
 # - quick checkin over facetime
 # - met at Cupertino
+
+
+
 
 # CHALLENGE:
 # 3. Similar to above, but display all of the activities for the salesperson

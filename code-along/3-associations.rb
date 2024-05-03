@@ -15,3 +15,30 @@ Contact.destroy_all
 # 2. How many contacts work at Apple?
 
 # 3. What is the full name of each contact who works at Apple?
+# find apple
+
+apple = Company.find_by({"name" => "Apple"})
+
+contact = Contact.new
+contact["first_name"] = "Tim"
+contact["last_name"] = "Cook"
+contact["company_id"] = apple["id"]
+contact.save
+
+p contact
+
+puts "There are #{Contact.all.count} Contacts"
+
+
+
+# how many contacts at Apple
+# find all: use where
+apple_contacts = Contact.where({"company_id" => apple["id"]})
+p apple_contacts
+
+# find full name of people working at Apple
+for employee in apple_contacts
+    first_name = employee["first_name"]
+    last_name = employee["last_name"]
+    puts "#{first_name} #{last_name}"
+end
